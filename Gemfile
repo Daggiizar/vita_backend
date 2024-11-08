@@ -22,6 +22,9 @@ gem "jbuilder"
 # HTTParty gem for HTTP requests
 gem "httparty" 
 
+# API keys and configuration settings across different environments.
+gem 'dotenv-rails'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
