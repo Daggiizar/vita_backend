@@ -4,7 +4,6 @@ class TransactionsController < ApplicationController
   def create
 
     user = User.find_by(id: params[:user_id])
-
     if user.nil?
       return render json: { error: 'User not found' }, status: :not_found
     end
@@ -25,12 +24,22 @@ class TransactionsController < ApplicationController
   def index
 
     user = User.find_by(id: params[:user_id])
-
     if user.nil?
       return render json: { error: 'User not found' }, status: :not_found
     end
 
     transactions = user.transactions
     render json: transactions, status: :ok
+  end
+
+  def show
+    
+    transaction = Transaction.find_by(id: params[:id], user_id: params[:user_id])
+
+    if transaction
+      render json: transaction, status: :ok
+    else
+      render json: { error: 'Transaction not found' }, status: :not_found
+    end
   end
 end
